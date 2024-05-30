@@ -1,4 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+$primary: #4D7298;
+$secondary: #A8D0DB;
+$info: #EEDED3;
+$light: #F2FDFF;
+$dark: #101935;
+
+$warning: #ffeb3b;
+$danger: #f44336;
+$success: #4caf50;
+
+// Import Bootstrap's source Sass files
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+:root {
+    --oxford-blue: #101935;
+    --ucla-blue: #4D7298;
+    --light-blue: #A8D0DB;
+    --champagne-pink: #EEDED3;
+    --azure: #F2FDFF;
+    --white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;// box-sizing: border-box;
+}
+
+body {
+    background-color: var(--azure);
+}
