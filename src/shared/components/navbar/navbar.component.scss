@@ -1,0 +1,52 @@
+/* ------------------------------ NAVBAR ------------------------------*/
+
+.bg-dark {
+    background: linear-gradient(
+      to right,
+      var(--oxford-blue),
+      #202258
+
+    );
+}
+
+.navbar-brand {
+    padding-left: 3rem;
+}
+
+.navbar-brand img {
+    width: 4rem;
+}
+
+.navbar-nav{
+    padding-right: 3rem;
+}
+
+#navbarSupportedContent {
+    display: none;
+  
+    &.show {
+      display: block;
+    }
+  
+    &.collapse {
+      display: none;
+    }
+  }
+
+.navbar-collapse {
+    justify-content: end;
+}
+
+ul a{
+    color: var(--azure);
+    padding-left: 2rem !important;
+    transition: 0.3s;
+}
+ul a:hover {
+    color: var(--light-blue);
+    // border-bottom: 0.1rem solid var(--light-blue);
+    // padding-bottom: 0.1rem;
+    text-decoration: underline;
+    text-underline-offset: 0.5rem;
+    cursor: pointer;
+}

@@ -9,9 +9,9 @@ import { CarrouselComponent } from 'src/shared/components/carrousel/carrousel.co
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
   ],
   imports: [
+    NavbarComponent,
     BrowserModule,
     AppRoutingModule,
     CarrouselComponent
