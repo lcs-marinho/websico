@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from 'src/shared/components/navbar/navbar.component';
+import { FooterComponent } from 'src/shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { NavbarComponent } from 'src/shared/components/navbar/navbar.component';
   ],
   imports: [
     NavbarComponent,
+    FooterComponent,
     BrowserModule,
     AppRoutingModule,
   ],

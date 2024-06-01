@@ -1,12 +1,12 @@
 /* ------------------------------ NAVBAR ------------------------------*/
 
 .bg-dark {
-    background: linear-gradient(
-      to right,
-      var(--oxford-blue),
-      #202258
-
-    );
+  height: 6rem;
+  background: linear-gradient(
+    to right,
+    var(--oxford-blue),
+    #202258
+  );
 }
 
 .navbar-brand {
@@ -22,31 +22,53 @@
 }
 
 #navbarSupportedContent {
-    display: none;
-  
-    &.show {
-      display: block;
-    }
-  
-    &.collapse {
-      display: none;
-    }
+  display: none;
+
+  &.show {
+    display: block;
+    background: linear-gradient(
+      to right,
+      var(--oxford-blue),
+      #202258
+    );
   }
 
-.navbar-collapse {
-    justify-content: end;
+  &.collapse {
+    display: none;
+  }
 }
 
-ul a{
-    color: var(--azure);
-    padding-left: 2rem !important;
-    transition: 0.3s;
+.nav-link {
+  color: var(--azure);
+  position: relative;
+  display: inline-block;
+  padding: 0.8rem 1.5rem !important;
+  transition: 0.3s color;
 }
-ul a:hover {
-    color: var(--light-blue);
-    // border-bottom: 0.1rem solid var(--light-blue);
-    // padding-bottom: 0.1rem;
-    text-decoration: underline;
-    text-underline-offset: 0.5rem;
-    cursor: pointer;
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 75%;
+  height: 0.1rem;
+  bottom: 0.4rem;
+  left: 12.5%;
+  background-color: var(--light-blue);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.5s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link:hover {
+  color: var(--light-blue);
+  cursor: pointer;
+}
+
+.navbar-toggler {
+  margin-right: 2rem;
+  color: var(--light-blue);
 }

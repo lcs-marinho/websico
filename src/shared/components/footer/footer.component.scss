@@ -1,0 +1,51 @@
+.footer {
+    width: 100%;
+    height: 12rem;
+    background-color: var(--oxford-blue);
+    bottom: 0;
+}
+
+.gridfooter-div {
+    background-color: aqua;
+    border: 2px solid rgb(255, 102, 102);
+}
+
+.footer_brand {
+    color: var(--azure);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: 0.3s;
+}
+
+.footer_brand:hover {
+    color: var(--champagne-pink);
+    cursor: pointer;
+}
+
+.footer_copy {
+    font-size: 0.75rem;
+    letter-spacing: 0.15rem;
+    padding: 1rem 0;
+    color: var(--azure);
+    transition: 0.4s;
+}
+
+.footer_copy:hover {
+    letter-spacing: 0.3rem;
+}
+
+.footer_social p {
+    color: var(--azure);
+}
+
+.footer_social a {
+    padding: 0 0.5rem;
+}
+
+.footer_social a svg {
+    color: var(--ucla-blue);
+    transition: 0.4s color;
+}
+
+.footer_social a svg:hover {
+    color: var(--azure); 
+}
