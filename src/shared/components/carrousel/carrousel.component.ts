@@ -16,25 +16,25 @@ export class CarrouselComponent {
     {
       router: '',
       img: 'assets/img/img_1.jpg',
-      title: 'WebSico',
+      title: 'Websico',
       description: 'Sinergia entre a psicologia e os avanços tecnológicos',
     },
     {
       router: '',
       img: 'assets/img/img_2.jpg',
-      title: 'WebSico',
-      description: 'Sinergia entre a psicologia e os avanços tecnológicos',
+      title: 'Pesquisa',
+      description: 'Nos ajude respondendo nosso formulário',
     },
     {
       router: '',
       img: 'assets/img/img_3.jpg',
-      title: 'WebSico',
+      title: 'Websico',
       description: 'Sinergia entre a psicologia e os avanços tecnológicos',
     },
     {
       router: '',
       img: 'assets/img/img_4.jpg',
-      title: 'WebSico',
+      title: 'Websico',
       description: 'Sinergia entre a psicologia e os avanços tecnológicos',
     },
   ];
