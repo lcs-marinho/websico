@@ -1,0 +1,54 @@
+<div class="container page">
+    <div class="card">
+      <div class="card-body">
+        <div [@questionAnimation]="currentQuestionIndex">
+          <h5 class="card-title">{{ questions[currentQuestionIndex].question }}</h5>
+          <form (ngSubmit)="nextQuestion()" *ngIf="currentQuestionIndex < questions.length - 1; else submitBlock">
+            <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'text' || questions[currentQuestionIndex].type === 'email' || questions[currentQuestionIndex].type === 'number'">
+              <input
+                [type]="questions[currentQuestionIndex].type"
+                class="form-control"
+                [(ngModel)]="questions[currentQuestionIndex].answer"
+                name="answer"
+                required
+              />
+            </div>
+            <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'checkbox'">
+              <div *ngFor="let option of questions[currentQuestionIndex].options">
+                <input
+                  type="checkbox"
+                  [value]="option"
+                  [(ngModel)]="questions[currentQuestionIndex].answer"
+                  name="answer"
+                /> {{ option }}
+              </div>
+            </div>
+            <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'radio'">
+              <div *ngFor="let option of questions[currentQuestionIndex].options">
+                <input
+                  type="radio"
+                  [value]="option"
+                  [(ngModel)]="questions[currentQuestionIndex].answer"
+                  name="answer"
+                  required
+                /> {{ option }}
+              </div>
+            </div>
+            <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'select'">
+              <select class="form-select" [(ngModel)]="questions[currentQuestionIndex].answer" name="answer" required>
+                <option *ngFor="let option of questions[currentQuestionIndex].options" [value]="option">{{ option }}</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Próxima</button>
+          </form>
+          <ng-template #submitBlock>
+            <button class="btn btn-success" (click)="submitForm()">Enviar</button>
+          </ng-template>
+          <div class="mt-3">
+            <button class="btn btn-secondary" (click)="previousQuestion()" [disabled]="currentQuestionIndex === 0">Voltar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

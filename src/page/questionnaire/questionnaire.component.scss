@@ -1,0 +1,17 @@
+.page {
+    margin-top: 10rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+}
+
+form > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-control,.form-select {
+    width: 65%;
+}

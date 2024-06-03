@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from 'src/shared/components/navbar/navbar.component';
 import { FooterComponent } from 'src/shared/components/footer/footer.component';
 import { ContentTwoComponent } from 'src/shared/components/content-two/content-two.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ContentTwoComponent } from 'src/shared/components/content-two/content-t
     FooterComponent,
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
