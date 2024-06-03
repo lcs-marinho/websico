@@ -9,21 +9,24 @@
 
     h1,p {
         color: var(--azure);
+        margin: 0;
     }
     
     hr {
         background-color: var(--light-blue);
         width: 23vw;
         height: .3rem;
+        margin: 0;
     }
 
     h1 {
-        font-size: 6rem;
+        font-size: 4.5rem;
     }
 
     p {
-        font-size: 2rem;
+        font-size: 1.8rem;
         text-align: center;
+        font-weight: 200;
     }
 
     @media (max-width: 575.98px) { 

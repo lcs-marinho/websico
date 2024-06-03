@@ -1,0 +1,29 @@
+.background-custom  {
+    color: var(--azure);
+    background: url("/assets/svg/background-marcador.svg") no-repeat center 100% / cover;
+    height: 10rem;   
+ }
+
+ p{
+    color:var(--ucla-blue);
+ }
+
+ .custom-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 4rem;
+    
+    span {
+        width: 56%;
+    }
+ }
+
+ @media (max-width: 768px) {
+    .custom-flex {
+
+        span {
+            width: 90%;
+        }
+     }  
+ }
