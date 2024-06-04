@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, UpperCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-questionnaire',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, UpperCasePipe],
   templateUrl: './questionnaire.component.html',
   styleUrls: ['./questionnaire.component.scss'],
   animations: [
     trigger('questionAnimation', [
       transition(':increment', [
-        style({ position: 'relative', opacity: 0 }),
-        animate('700ms ease-out', style({ opacity: 1 }))
+        style({ position: 'relative', opacity: 0,  transform: 'translateY(20%)' }),
+        animate('500ms ease-out', style({ opacity: 1 ,  transform: 'translateY(0)'}))
       ]),
       transition(':decrement', [
-        style({ position: 'relative', opacity: 0 }),
-        animate('700ms ease-out', style({ opacity: 1 }))
+        style({ position: 'relative', opacity: 0,  transform: 'translateY(-20%)'}),
+        animate('500ms ease-out', style({ opacity: 1,  transform: 'translateY(0)'}))
       ])
     ])
   ]
@@ -26,25 +26,29 @@ export class QuestionnaireComponent {
   currentQuestionIndex: number = 0;
   questions = [
     { question: 'Qual é o seu nome?', type: 'text', answer: '' },
-    { question: 'Qual é o seu email?', type: 'email', answer: '' },
     { question: 'Qual é a sua idade?', type: 'number', answer: '' },
+    { question: 'Seu sexo', type: 'radio', options: ['Masculino', 'Feminino', 'Prefiro não responder'], answer: '' },
     { 
-      question: 'Quais são seus hobbies?', 
-      type: 'checkbox', 
-      options: ['Ler', 'Esportes', 'Música', 'Viagens'], 
-      answer: [] 
-    },
-    { 
-      question: 'Qual seu gênero?', 
-      type: 'radio', 
-      options: ['Masculino', 'Feminino', 'Outro'], 
-      answer: '' 
-    },
-    { 
-      question: 'Qual é o seu país?', 
+      question: 'Estado em que reside', 
       type: 'select', 
-      options: ['Brasil', 'Estados Unidos', 'Canadá'], 
+      options: [
+        'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'NE', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'SC', 'SE', 'SP', 'TO'], 
+      answer: ''
+    },
+    { 
+      question: 'Você sabe o que é uma avaliação psicológica?', 
+      type: 'radio', 
+      options: ['Sim', 'Não', 'Não tenho certeza'], 
       answer: '' 
+    },
+    { 
+      question: 'Você sabe o que é uma avaliação psicológica?', 
+      type: 'radio', 
+      options: ['Sim', 'Não', 'Não tenho certeza'], 
+      answer: '' 
+    },
+    { 
+      question: 'AGORA É SÓ ENVIAR', 
     }
   ];
 
@@ -56,12 +60,12 @@ export class QuestionnaireComponent {
 
   previousQuestion() {
     if (this.currentQuestionIndex > 0) {
-      this.currentQuestionIndex--;
+      this.currentQuestionIndex = this.currentQuestionIndex - 1;
     }
   }
 
   submitForm() {
-    console.log(this.questions);
     // Aqui você pode enviar os dados para um backend ou processá-los conforme necessário
+    console.log(this.questions[0].answer)
   }
 }

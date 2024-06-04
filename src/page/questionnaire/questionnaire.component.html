@@ -1,54 +1,58 @@
-<div class="container page">
-    <div class="card">
-      <div class="card-body">
-        <div [@questionAnimation]="currentQuestionIndex">
-          <h5 class="card-title">{{ questions[currentQuestionIndex].question }}</h5>
-          <form (ngSubmit)="nextQuestion()" *ngIf="currentQuestionIndex < questions.length - 1; else submitBlock">
-            <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'text' || questions[currentQuestionIndex].type === 'email' || questions[currentQuestionIndex].type === 'number'">
+<div class="container">
+  <h3 style="color: var(--oxford-blue);margin-top: 5rem;" class="text-center">{{'Sua opinião faz a diferença!' | uppercase}}</h3>
+  <br>
+  <br>
+    <div class="card-body">
+      <div [@questionAnimation]="currentQuestionIndex" class=" d-flex flex-column justify-content-center align-items-center gap-4">
+        <h5 class="card-title custom-h5 fs-6">{{ questions[currentQuestionIndex].question }}</h5>
+        <form (ngSubmit)="nextQuestion()" *ngIf="currentQuestionIndex < questions.length - 1; else submitBlock">
+          <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'text' || questions[currentQuestionIndex].type === 'email' || questions[currentQuestionIndex].type === 'number'">
+            <input
+              [type]="questions[currentQuestionIndex].type"
+              class="form-control"
+              [(ngModel)]="questions[currentQuestionIndex].answer"
+              name="answer"
+              required
+              placeholder="Sua resposta aqui"
+            />
+          </div>
+          <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'checkbox'">
+            <div *ngFor="let option of questions[currentQuestionIndex].options">
               <input
-                [type]="questions[currentQuestionIndex].type"
-                class="form-control"
+                type="checkbox"
+                [value]="option"
+                [(ngModel)]="questions[currentQuestionIndex].answer"
+                name="answer"
+              /> {{ option }}
+            </div>
+          </div>
+          <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'radio'">
+            <div *ngFor="let option of questions[currentQuestionIndex].options">
+              <input
+                type="radio"
+                [value]="option"
                 [(ngModel)]="questions[currentQuestionIndex].answer"
                 name="answer"
                 required
-              />
+              /> {{ option }}
             </div>
-            <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'checkbox'">
-              <div *ngFor="let option of questions[currentQuestionIndex].options">
-                <input
-                  type="checkbox"
-                  [value]="option"
-                  [(ngModel)]="questions[currentQuestionIndex].answer"
-                  name="answer"
-                /> {{ option }}
-              </div>
-            </div>
-            <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'radio'">
-              <div *ngFor="let option of questions[currentQuestionIndex].options">
-                <input
-                  type="radio"
-                  [value]="option"
-                  [(ngModel)]="questions[currentQuestionIndex].answer"
-                  name="answer"
-                  required
-                /> {{ option }}
-              </div>
-            </div>
-            <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'select'">
-              <select class="form-select" [(ngModel)]="questions[currentQuestionIndex].answer" name="answer" required>
-                <option *ngFor="let option of questions[currentQuestionIndex].options" [value]="option">{{ option }}</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Próxima</button>
-          </form>
-          <ng-template #submitBlock>
-            <button class="btn btn-success" (click)="submitForm()">Enviar</button>
-          </ng-template>
-          <div class="mt-3">
-            <button class="btn btn-secondary" (click)="previousQuestion()" [disabled]="currentQuestionIndex === 0">Voltar</button>
           </div>
-        </div>
+          <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'select'">
+            <select class="form-select" [(ngModel)]="questions[currentQuestionIndex].answer" name="answer" required>
+              <option *ngFor="let option of questions[currentQuestionIndex].options" [value]="option">{{ option }}</option>
+            </select>
+          </div>
+          <span class="d-flex flex-row gap-4 justify-content-center align-items-center mt-4">
+            <button type="submit" [disabled]="questions[currentQuestionIndex].answer == ''" class="btn" style="background-color: var(--ucla-blue);color: var(--azure);">Próxima</button>
+            
+              <button type="button" class="btn btn-secondary" (click)="previousQuestion()" [disabled]="currentQuestionIndex === 0">Voltar</button>
+            
+          </span>
+        </form>
+        <ng-template #submitBlock>
+          <button class="btn btn-success" (click)="submitForm()">Enviar</button>
+        </ng-template>
       </div>
     </div>
-  </div>
   
+</div>
