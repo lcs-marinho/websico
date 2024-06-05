@@ -53,7 +53,7 @@ export class QuestionnaireComponent {
     experienciaParticipacao: string;
     motivacao: string;
     interesseFuturo: string;
-    importanciaAvaliacaoPsicologicaComentario: string;
+    comentario: string;
   } = {
     nome: '',
     faixaEtaria: '',
@@ -64,7 +64,7 @@ export class QuestionnaireComponent {
     experienciaParticipacao: '',
     motivacao: '',
     interesseFuturo: '',
-    importanciaAvaliacaoPsicologicaComentario: '',
+    comentario: '',
   };
 
   currentQuestionIndex: number = 0;
@@ -182,8 +182,8 @@ export class QuestionnaireComponent {
       return;
     }
 
-    if (this.questions[5].answer == 'Não') {
-      this, (this.currentQuestionIndex = 9);
+    if (this.questions[5].answer == 'Não' && this.currentQuestionIndex == 5) {
+      this.currentQuestionIndex = 9;
       return;
     }
 
@@ -228,7 +228,7 @@ export class QuestionnaireComponent {
     this.poll.experienciaParticipacao = this.questions[6].answer!;
     this.poll.motivacao = this.questions[7].answer!;
     this.poll.interesseFuturo = this.questions[8].answer!;
-    this.poll.importanciaAvaliacaoPsicologicaComentario = this.questions[9].answer!;
+    this.poll.comentario = this.questions[9].answer!;
   
     console.log(this.poll)
   }
