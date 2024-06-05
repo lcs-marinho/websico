@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-questionnaire',
@@ -12,92 +18,176 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   animations: [
     trigger('questionAnimation', [
       transition(':increment', [
-        style({ position: 'relative', opacity: 0,  transform: 'translateY(20%)' }),
-        animate('500ms ease-out', style({ opacity: 1 ,  transform: 'translateY(0)'}))
+        style({
+          position: 'relative',
+          opacity: 0,
+          transform: 'translateY(20%)',
+        }),
+        animate(
+          '500ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' })
+        ),
       ]),
       transition(':decrement', [
-        style({ position: 'relative', opacity: 0,  transform: 'translateY(-20%)'}),
-        animate('500ms ease-out', style({ opacity: 1,  transform: 'translateY(0)'}))
-      ])
-    ])
-  ]
+        style({
+          position: 'relative',
+          opacity: 0,
+          transform: 'translateY(-20%)',
+        }),
+        animate(
+          '500ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class QuestionnaireComponent {
-
-  poll?: {
-    nome: string
-    faixaEtaria: string
-    sexo: string
-    estado: string
-    ouviuFalarDeAvaliacaoPsicologica: string
-    participouDeAvaliacaoPsicologica: string
-    experienciaParticipacao: string
-    motivacao: string
-    interesseFuturo: string
-    importanciaAvaliacaoPsicologicaComentario: ""
+  poll: {
+    nome: string;
+    faixaEtaria: string;
+    sexo: string;
+    estado: string;
+    ouviuFalarDeAvaliacaoPsicologica: string;
+    participouDeAvaliacaoPsicologica: string;
+    experienciaParticipacao: string;
+    motivacao: string;
+    interesseFuturo: string;
+    importanciaAvaliacaoPsicologicaComentario: string;
+  } = {
+    nome: '',
+    faixaEtaria: '',
+    sexo: '',
+    estado: '',
+    ouviuFalarDeAvaliacaoPsicologica: '',
+    participouDeAvaliacaoPsicologica: '',
+    experienciaParticipacao: '',
+    motivacao: '',
+    interesseFuturo: '',
+    importanciaAvaliacaoPsicologicaComentario: '',
   };
 
   currentQuestionIndex: number = 0;
   questions = [
     { question: 'Qual é o seu nome?', type: 'text', answer: '' },
-    { question: 'Qual sua faixa etária?', type: 'select', options: ['3-18 anos','19-29  anos','30-39  anos','40-49  anos','50-59 anos','60-69 anos'] ,answer: '' },
-    { question: 'Seu sexo', type: 'radio', options: ['Masculino', 'Feminino', 'Prefiro não responder'], answer: '' },
-    { 
-      question: 'Estado em que reside', 
-      type: 'select', 
+    {
+      question: 'Qual sua faixa etária?',
+      type: 'select',
       options: [
-        'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'NE', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'SC', 'SE', 'SP', 'TO'], 
-      answer: ''
+        '14-19 anos',
+        '20-29 anos',
+        '30-39 anos',
+        '40-49 anos',
+        '50-59 anos',
+        '60-69 anos',
+        '70 anos ou +',
+      ],
+      answer: '',
     },
-    { 
-      question: 'Você já ouviu falar de avaliação psicológica?', 
-      type: 'radio', 
-      options: ['Sim', 'Não'], 
-      answer: '' 
+    {
+      question: 'Seu sexo',
+      type: 'radio',
+      options: ['Masculino', 'Feminino', 'Prefiro não responder'],
+      answer: '',
     },
-    { 
-      question: 'Já participou de um processo de avaliação psicológica?', 
-      type: 'radio', 
-      options: ['Sim', 'Não'], 
-      answer: '' 
+    {
+      question: 'Estado em que reside',
+      type: 'select',
+      options: [
+        'AC',
+        'AL',
+        'AP',
+        'AM',
+        'BA',
+        'CE',
+        'DF',
+        'ES',
+        'GO',
+        'MA',
+        'MG',
+        'MS',
+        'MT',
+        'NE',
+        'PA',
+        'PB',
+        'PE',
+        'PI',
+        'PR',
+        'RJ',
+        'RN',
+        'RO',
+        'RR',
+        'SC',
+        'SE',
+        'SP',
+        'TO',
+      ],
+      answer: '',
     },
-    { 
-      question: 'Como foi sua experiência ao participar?', 
-      type: 'radio', 
-      options: ['Excelente', 'Boa','Regular','Ruim','Péssima','Não participei'], 
-      answer: '' 
+    {
+      question: 'Você já ouviu falar de avaliação psicológica?',
+      type: 'radio',
+      options: ['Sim', 'Não'],
+      answer: '',
     },
-    { 
-      question: 'Qual foi sua motivação?', 
-      type: 'select', 
-      options: ['Encaminhamento médico', 'Interesse próprio','Contexto profissional','Contexto escolar','Psicotécnico','Não se aplica','Indicação de parentesco', 'Outros'], 
-      answer: '' 
+    {
+      question: 'Já participou de um processo de avaliação psicológica?',
+      type: 'radio',
+      options: ['Sim', 'Não'],
+      answer: '',
+    },
+    {
+      question: 'Como foi sua experiência ao participar?',
+      type: 'radio',
+      options: ['Excelente', 'Boa', 'Regular', 'Ruim', 'Péssima'],
+      answer: '',
+    },
+    {
+      question: 'Qual foi sua motivação?',
+      type: 'select',
+      options: [
+        'Encaminhamento médico',
+        'Interesse próprio',
+        'Contexto profissional',
+        'Contexto escolar',
+        'Psicotécnico',
+        'Não se aplica',
+        'Indicação de parentesco',
+        'Outros',
+      ],
+      answer: '',
     },
     // Caso nao saiba, o que é avaliação psicologica
-    { 
-      question: 'Teria interesse em aprender/particiar de uma futura avaliação?', 
-      type: 'radio', 
-      options: ['Sim','Não'], 
-      answer: '' 
+    {
+      question:
+        'Teria interesse em aprender/particiar de uma futura avaliação?',
+      type: 'radio',
+      options: ['Sim', 'Não'],
+      answer: '',
     },
-    { 
-      question: 'Acredita que avaliação psicológica seja importante? Deixe um comentário!', 
-      type: 'text', 
-      answer: '' 
+    {
+      question:
+        'Acredita que avaliação psicológica seja importante? Deixe um comentário!',
+      type: 'text',
+      answer: '',
     },
-    { 
-      question: 'AGORA É SÓ ENVIAR', 
-    }
+    {
+      question: 'AGORA É SÓ ENVIAR',
+    },
   ];
 
   nextQuestion() {
-    
-    if(this.questions[4].answer == 'Não' && this.currentQuestionIndex == 4 ) {
+    if (this.questions[4].answer == 'Não' && this.currentQuestionIndex == 4) {
       this.currentQuestionIndex = 8;
       return;
     }
 
-    if(this.currentQuestionIndex == 7 ) {
+    if (this.questions[5].answer == 'Não') {
+      this, (this.currentQuestionIndex = 9);
+      return;
+    }
+
+    if (this.currentQuestionIndex == 7) {
       this.currentQuestionIndex = 9;
       return;
     }
@@ -108,13 +198,17 @@ export class QuestionnaireComponent {
   }
 
   previousQuestion() {
-
-    if(this.currentQuestionIndex == 8) {
+    if (this.currentQuestionIndex == 8) {
       this.currentQuestionIndex = 4;
       return;
     }
 
-    if(this.questions[4].answer == 'Sim' && this.currentQuestionIndex == 9) {
+    if (this.questions[5].answer == 'Não' && this.currentQuestionIndex == 9) {
+      this, (this.currentQuestionIndex = 5);
+      return;
+    }
+
+    if (this.questions[4].answer == 'Sim' && this.currentQuestionIndex == 9) {
       this.currentQuestionIndex = 7;
       return;
     }
@@ -125,7 +219,17 @@ export class QuestionnaireComponent {
   }
 
   submitForm() {
-    // Aqui você pode enviar os dados para um backend ou processá-los conforme necessário
-    console.log(this.questions[0].answer)
+    this.poll.nome = this.questions[0].answer!;
+    this.poll.faixaEtaria = this.questions[1].answer!;
+    this.poll.sexo = this.questions[2].answer!;
+    this.poll.estado = this.questions[3].answer!;
+    this.poll.ouviuFalarDeAvaliacaoPsicologica = this.questions[4].answer!;
+    this.poll.participouDeAvaliacaoPsicologica = this.questions[5].answer!;
+    this.poll.experienciaParticipacao = this.questions[6].answer!;
+    this.poll.motivacao = this.questions[7].answer!;
+    this.poll.interesseFuturo = this.questions[8].answer!;
+    this.poll.importanciaAvaliacaoPsicologicaComentario = this.questions[9].answer!;
+  
+    console.log(this.poll)
   }
 }
