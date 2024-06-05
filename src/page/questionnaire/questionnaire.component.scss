@@ -1,0 +1,43 @@
+
+form > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-control,.form-select {
+    width: 65%;
+}
+
+.custom-flex {
+    row-gap: 4rem;
+}
+
+.custom-h5 {
+    background-color: var(--purple);
+    color: var(--white);
+    padding: .7rem 1.5rem;
+    border-radius: 1rem;
+    width: fit-content;
+}
+
+input[type="text"], input[type="number"] {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 30rem;
+    height: 3rem;
+}
+
+@media (max-width: 767.98px) { 
+    input[type="text"], input[type="number"] {
+        width: 24rem;
+        height: 3rem;
+    } 
+}
+
+@media (max-width: 575.98px) {
+    input[type="text"], input[type="number"] {
+        width: 17rem;
+        height: 3rem;
+    }
+}
