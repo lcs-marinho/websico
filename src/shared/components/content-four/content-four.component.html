@@ -1,0 +1,20 @@
+
+<div id="content-four">
+
+    <h2 class="text-center">Algumas opiniões sobre a importância da avaliação psicológica</h2>
+
+    <div class="carousel-container">
+        <div class="carousel-track">
+          <div class="card mx-2 mt-3 mb-4" *ngFor="let comment of comments">
+                <p>{{ comment.message }}</p>
+                <span class="d-flex flex-row align-items-center">
+                    <img [src]="comment.imageUrl" alt="{{ comment.name }}" class="comment-image">
+                    <h5 class="fs-6">{{ comment.name }}</h5>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <p class="fs-5 text-center">Participe do formulário! Quem sabe seu comentário não aparece aqui?</p>
+</div>
+  
