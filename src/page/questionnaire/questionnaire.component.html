@@ -4,7 +4,7 @@
   <br>
     <div class="card-body">
       <div [@questionAnimation]="currentQuestionIndex" class=" d-flex flex-column justify-content-center align-items-center gap-4">
-        <h5 class="card-title custom-h5 fs-6">{{ questions[currentQuestionIndex].question }}</h5>
+        <h5 class="card-title custom-h5 fs-6 text-center">{{ questions[currentQuestionIndex].question }}</h5>
         <form (ngSubmit)="nextQuestion()" *ngIf="currentQuestionIndex < questions.length - 1; else submitBlock">
           <div class="mb-3" *ngIf="questions[currentQuestionIndex].type === 'text' || questions[currentQuestionIndex].type === 'email' || questions[currentQuestionIndex].type === 'number'">
             <input
@@ -43,10 +43,8 @@
             </select>
           </div>
           <span class="d-flex flex-row gap-4 justify-content-center align-items-center mt-4">
-            <button type="submit" [disabled]="questions[currentQuestionIndex].answer == ''" class="btn" style="background-color: var(--ucla-blue);color: var(--azure);">Próxima</button>
-            
-              <button type="button" class="btn btn-secondary" (click)="previousQuestion()" [disabled]="currentQuestionIndex === 0">Voltar</button>
-            
+            <button type="button" class="btn btn-secondary" (click)="previousQuestion()" [disabled]="currentQuestionIndex === 0">Voltar</button>
+            <button type="submit" [disabled]="questions[currentQuestionIndex].answer == ''" class="btn" style="background-color: var(--ucla-blue);color: var(--azure);">Próxima</button>        
           </span>
         </form>
         <ng-template #submitBlock>
