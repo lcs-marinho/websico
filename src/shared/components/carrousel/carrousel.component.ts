@@ -22,20 +22,20 @@ export class CarrouselComponent {
     {
       router: '',
       img: 'assets/img/img_2.jpg',
-      title: 'Pesquisa',
-      description: 'Nos ajude respondendo nosso formulário',
+      title: 'Deixe sua opinião!',
+      description: 'Talvez você apareça nos comentários ao final da página',
     },
-    {
-      router: '',
-      img: 'assets/img/img_3.jpg',
-      title: 'Websico',
-      description: 'Sinergia entre a psicologia e os avanços tecnológicos',
-    },
+    // {
+    //   router: '',
+    //   img: 'assets/img/img_3.jpg',
+    //   title: 'Websico',
+    //   description: 'Respostas no menu Dashboards',
+    // },
     {
       router: '',
       img: 'assets/img/img_4.jpg',
-      title: 'Websico',
-      description: 'Sinergia entre a psicologia e os avanços tecnológicos',
+      title: 'Revolução Digital na Psicologia ',
+      description: 'Já pensou como o mundo vai se tornar cada vez mais digital?',
     },
   ];
 
