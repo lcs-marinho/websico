@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule, UpperCasePipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, Validators } from '@angular/forms';
 import {
   trigger,
   state,
@@ -8,6 +8,8 @@ import {
   transition,
   animate,
 } from '@angular/animations';
+import { Router } from '@angular/router';
+import { EnqueteService } from 'src/shared/service/enquete.service';
 
 @Component({
   selector: 'app-questionnaire',
@@ -43,29 +45,19 @@ import {
   ],
 })
 export class QuestionnaireComponent {
-  poll: {
-    nome: string;
-    faixaEtaria: string;
-    sexo: string;
-    estado: string;
-    ouviuFalarDeAvaliacaoPsicologica: string;
-    participouDeAvaliacaoPsicologica: string;
-    experienciaParticipacao: string;
-    motivacao: string;
-    interesseFuturo: string;
-    comentario: string;
-  } = {
-    nome: '',
-    faixaEtaria: '',
-    sexo: '',
-    estado: '',
-    ouviuFalarDeAvaliacaoPsicologica: '',
-    participouDeAvaliacaoPsicologica: '',
-    experienciaParticipacao: '',
-    motivacao: '',
-    interesseFuturo: '',
-    comentario: '',
-  };
+  
+  pollForm = this.fb.group({
+    nome: ['', Validators.required],
+    faixaEtaria: ['', Validators.required],
+    sexo: ['', Validators.required],
+    estado: ['', Validators.required],
+    ouviuFalarDeAvaliacaoPsicologica: ['', Validators.required],
+    participouDeAvaliacaoPsicologica: ['', Validators.required],
+    experienciaParticipacao: ['', Validators.required],
+    motivacao: ['', Validators.required],
+    interesseFuturo: ['', Validators.required],
+    comentario: ['', Validators.required],
+  });
 
   currentQuestionIndex: number = 0;
   questions = [
@@ -172,9 +164,11 @@ export class QuestionnaireComponent {
       answer: '',
     },
     {
-      question: 'AGORA É SÓ ENVIAR',
+      question: 'Parabéns! Você chegou ao fim do formulário. Achou que não acabaria nunca? Nós também! Agora é só clicar em ENVIAR!',
     },
   ];
+
+  constructor(private router: Router, private enqueteService: EnqueteService, private fb: FormBuilder) { }
 
   nextQuestion() {
     if (this.questions[4].answer == 'Não' && this.currentQuestionIndex == 4) {
@@ -218,18 +212,34 @@ export class QuestionnaireComponent {
     }
   }
 
-  submitForm() {
-    this.poll.nome = this.questions[0].answer!;
-    this.poll.faixaEtaria = this.questions[1].answer!;
-    this.poll.sexo = this.questions[2].answer!;
-    this.poll.estado = this.questions[3].answer!;
-    this.poll.ouviuFalarDeAvaliacaoPsicologica = this.questions[4].answer!;
-    this.poll.participouDeAvaliacaoPsicologica = this.questions[5].answer!;
-    this.poll.experienciaParticipacao = this.questions[6].answer!;
-    this.poll.motivacao = this.questions[7].answer!;
-    this.poll.interesseFuturo = this.questions[8].answer!;
-    this.poll.comentario = this.questions[9].answer!;
-  
-    console.log(this.poll)
+  navigate(rota: string) {
+    this.router.navigate([rota])
   }
+
+  submitForm() {
+    this.pollForm.setValue({
+      nome: this.questions[0].answer!,
+      faixaEtaria: this.questions[1].answer!,
+      sexo: this.questions[2].answer!,
+      estado: this.questions[3].answer!,
+      ouviuFalarDeAvaliacaoPsicologica: this.questions[4].answer!,
+      participouDeAvaliacaoPsicologica: this.questions[5].answer!,
+      experienciaParticipacao: this.questions[6].answer!,
+      motivacao: this.questions[7].answer!,
+      interesseFuturo: this.questions[8].answer!,
+      comentario: this.questions[9].answer!,
+    });
+
+    this.enqueteService.sendResponse(this.pollForm.value).subscribe({
+      next: (success: any) => {
+        this.msgRequest = success.success;
+      },
+      error: (err: any) => {
+        this.msgRequest = 'Deu erro no envio!';
+      }
+    })
+
+  }
+
+  msgRequest?: string;
 }

@@ -51,9 +51,28 @@
           </span>
         </form>
         <ng-template #submitBlock>
-          <button class="btn btn-success" (click)="submitForm()">Enviar</button>
+          <button class="btn btn-success" (click)="submitForm()"  data-bs-toggle="modal" data-bs-target="#confirmationSend">Enviar logo minhas respostas!</button>
         </ng-template>
       </div>
     </div>
   
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="confirmationSend" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{msgRequest}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Tudo certo! Obrigado por participar!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="navigate('/inicio')">Voltar para página inicial</button>
+      </div>
+    </div>
+  </div>
 </div>

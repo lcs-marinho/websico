@@ -7,12 +7,14 @@ import { NavbarComponent } from 'src/shared/components/navbar/navbar.component';
 import { FooterComponent } from 'src/shared/components/footer/footer.component';
 import { ContentTwoComponent } from 'src/shared/components/content-two/content-two.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    HttpClientModule,
     NavbarComponent,
     ContentTwoComponent,
     FooterComponent,
