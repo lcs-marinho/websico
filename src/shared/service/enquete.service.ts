@@ -7,11 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class EnqueteService {
 
-  private readonly api = 'http://localhost:8000/api'
+  private readonly api_localhot = 'http://localhost:8000/api';
+  private readonly api_server = 'http://3.22.172.61/api'
 
   constructor(private http: HttpClient) { }
 
   sendResponse(valueForm: any): Observable<any> {
-    return this.http.post(`${this.api}/register_psichology`, valueForm);
+    return this.http.post(`${this.api_server}/register_psichology`, valueForm);
   }
 }

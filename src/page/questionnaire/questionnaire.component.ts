@@ -233,13 +233,16 @@ export class QuestionnaireComponent {
     this.enqueteService.sendResponse(this.pollForm.value).subscribe({
       next: (success: any) => {
         this.msgRequest = success.success;
+        this.msgRequest2 = 'Tudo certo por aqui, obrigado por participar!'
       },
       error: (err: any) => {
-        this.msgRequest = 'Deu erro no envio!';
+        this.msgRequest = 'Algo deu errado';
+        this.msgRequest2 = 'Tente novamente mais tarde!'
       }
     })
 
   }
 
   msgRequest?: string;
+  msgRequest2?: string;
 }
