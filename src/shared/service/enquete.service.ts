@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class EnqueteService {
 
   private readonly api_localhot = 'http://localhost:8000/api';
-  private readonly api_server = '/3.22.172.61/api'
+  private readonly api_server = 'https://3.22.172.61/api'
 
   constructor(private http: HttpClient) { }
 
