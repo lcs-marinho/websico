@@ -159,12 +159,12 @@ export class QuestionnaireComponent {
     },
     {
       question:
-        'Acredita que avaliação psicológica seja importante? Deixe um comentário!',
+        'Acredita que a avaliação psicológica seja importante? Deixe um comentário sobre a sua opinião!',
       type: 'text',
       answer: '',
     },
     {
-      question: 'Parabéns! Você chegou ao fim do formulário. Achou que não acabaria nunca? Nós também! Agora é só clicar em ENVIAR!',
+      question: 'Parabéns! Chegamos ao fim do formulário. Agora é só clicar em ENVIAR!',
     },
   ];
 
@@ -183,6 +183,11 @@ export class QuestionnaireComponent {
 
     if (this.currentQuestionIndex == 7) {
       this.currentQuestionIndex = 9;
+      return;
+    }
+
+    if (this.currentQuestionIndex == 8) {
+      this.currentQuestionIndex = 10;
       return;
     }
 
