@@ -8,6 +8,8 @@ import { FooterComponent } from 'src/shared/components/footer/footer.component';
 import { ContentTwoComponent } from 'src/shared/components/content-two/content-two.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxEchartsModule } from 'ngx-echarts';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     ContentTwoComponent,
     FooterComponent,
     BrowserModule,
+    NgxEchartsModule.forRoot({ echarts: () => import('echarts') }),
     AppRoutingModule,
     BrowserAnimationsModule
   ],

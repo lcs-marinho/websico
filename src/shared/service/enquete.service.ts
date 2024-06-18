@@ -15,4 +15,5 @@ export class EnqueteService {
   sendResponse(valueForm: any): Observable<any> {
     return this.http.post(`${this.api_server}/register_psichology`, valueForm);
   }
+
 }
