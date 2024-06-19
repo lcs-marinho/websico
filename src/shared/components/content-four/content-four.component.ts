@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
+import { EnqueteService } from "src/shared/service/enquete.service";
 
 export interface Comment {
   name: string;
@@ -18,58 +19,58 @@ export interface Comment {
 export class ContentFourComponent implements OnInit {
   comments: Comment[] = [
     {
-      name: 'João',
-      message: 'Comentário 1',
+      name: 'Lucas',
+      message: 'creio que sim, muito importante para identificar possíveis problemas psicológicos e etc...',
       imageUrl: 'assets/img/homem1.jpeg'
     },
     {
-      name: 'Maria',
-      message: 'Comentário 2',
+      name: 'Letícia',
+      message: 'Extremamente importante. Nos ajuda a entender que somos a aprendemos a lhe dar com as adversidade do mundo.',
       imageUrl: 'assets/img/mulher1.jpeg'
     },
     {
-      name: 'Carlos',
-      message: 'Comentário 3',
+      name: 'DIERE EVE FELIX DA SILVA',
+      message: 'Sim.entendimento do comportamento pessoal . saúde mental,Desenvolvimento pessoal.etc.',
       imageUrl: 'assets/img/homem2.jpeg'
     },
     {
-      name: 'Ana',
-      message: 'Comentário 4',
+      name: 'Sebastiana dos Santos',
+      message: 'Sim.Porque nos ajuda a enfrentar traumas e problemas do nosso dia a dia.',
       imageUrl: 'assets/img/mulher2.jpeg'
     },
     {
-      name: 'Beatriz',
-      message: 'Comentário 5',
+      name: 'Angela',
+      message: 'Sim, Avaliar se uma pessoa esta apta psicologicamente para exercer uma função e importante',
       imageUrl: 'assets/img/mulher3.jpeg'
     },
     {
-      name: 'Pedro',
-      message: 'Comentário 6',
+      name: 'Milton Neves',
+      message: 'Sim! Para podermos alinhar os sentimentos, organizar os pensamentos e outras situações mais.',
       imageUrl: 'assets/img/homem3.jpeg'
     },
     {
       name: 'Matheus',
-      message: 'Comentário 7',
+      message: 'Sim, minha esposa é psicóloga e vejo muita importância no seu trabalho clínico.',
       imageUrl: 'assets/img/homem1.jpeg'
     },
     {
-      name: 'Bianca',
-      message: 'Comentário 8',
+      name: 'Eliane Moreira',
+      message: 'Sim, através de uma boa avaliação psicológica podemos escolher melhor as pessoas que irão trabalhar conosco, se sabem trabalhar em grupo ou se apresentam algum desvio de personalidade',
       imageUrl: 'assets/img/mulher1.jpeg'
     },
     {
-      name: 'Gabriel',
-      message: 'Comentário 9',
+      name: 'Felipe',
+      message: 'Sim. A avaliação psicológica é crucial para diagnósticos precisos e intervenções eficazes em diversos contextos, promovendo saúde e bem-estar.',
       imageUrl: 'assets/img/homem2.jpeg'
     },
     {
       name: 'Beatriz',
-      message: 'Comentário 10',
+      message: 'Sim. A avaliação psicológica é muito importante! Tanto para diagnosticar, quanto para compreender e lidar com as questões mentais e comportamentais.',
       imageUrl: 'assets/img/mulher2.jpeg'
     }
   ];
 
-  constructor() { }
+  constructor(private enqueteService: EnqueteService) { }
 
   ngOnInit(): void {
     this.comments = this.duplicateComments(this.comments);
@@ -78,4 +79,6 @@ export class ContentFourComponent implements OnInit {
   duplicateComments(comments: Comment[]): Comment[] {
     return [...comments, ...comments];
   }
+
+  
 }
