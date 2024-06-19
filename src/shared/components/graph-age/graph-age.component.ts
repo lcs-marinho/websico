@@ -17,6 +17,11 @@ export class GraphAgeComponent {
   constructor(private enqueteService: EnqueteService) {
     this.enqueteService.getAge().subscribe(it => {
       this.option = {
+        title: {
+          text: 'Faixa Etária',
+          subtext: '',
+          left: 'center'
+        },
         tooltip: {
           trigger: 'item'
         },
@@ -26,7 +31,7 @@ export class GraphAgeComponent {
         },
         series: [
           {
-            name: 'Access From',
+            name: 'Info',
             type: 'pie',
             radius: ['40%', '70%'],
             avoidLabelOverlap: false,

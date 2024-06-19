@@ -18,7 +18,7 @@ export class GraphPsychologyProcessComponent {
     this.enqueteService.getPsychologyProcess().subscribe(it => {
       this.option = {
         title: {
-          text: 'Participação em processe de avaliação psicológica',
+          text: 'Participação em processo de avaliação psicológica',
           subtext: '',
           left: 'center'
         },
@@ -31,7 +31,7 @@ export class GraphPsychologyProcessComponent {
         },
         series: [
           {
-            name: 'Access From',
+            name: 'Info',
             type: 'pie',
             radius: ['40%', '70%'],
             avoidLabelOverlap: false,

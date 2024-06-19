@@ -32,7 +32,7 @@ export class GraphPsychologyFormComponent {
         },
         series: [
           {
-            name: 'Access From',
+            name: 'Info',
             type: 'pie',
             radius: ['40%', '70%'],
             center: ['50%', '70%'],

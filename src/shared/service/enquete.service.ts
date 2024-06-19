@@ -40,7 +40,9 @@ export class EnqueteService {
     return this.http.get(`${this.api_server}/graph/psychology_process`);
   }
 
-  
+  getInteresse(): Observable<any> {
+    return this.http.get(`${this.api_server}/graph/interesseFuturo`);
+  }
 
   
 }

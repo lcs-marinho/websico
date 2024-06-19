@@ -5,38 +5,37 @@ import { EChartsOption } from 'echarts';
 import { EnqueteService } from 'src/shared/service/enquete.service';
 
 @Component({
-  selector: 'app-graph-state',
+  selector: 'app-graph-interesse',
   standalone: true,
   imports: [CommonModule,NgxEchartsModule],
-  templateUrl: './graph-state.component.html',
-  styleUrls: ['./graph-state.component.scss']
+  templateUrl: './graph-interesse.component.html',
+  styleUrls: ['./graph-interesse.component.scss']
 })
-export class GraphStateComponent {
+export class GraphInteresseComponent {
+  option: EChartsOption = {};
 
   constructor(private enqueteService: EnqueteService) {
-    this.enqueteService.getState().subscribe(it => {
+    this.enqueteService.getInteresse().subscribe(it => {
       this.option = {
         title: {
-          text: 'Região',
+          text: 'Interesse em particiar de um processo de avaliação',
           subtext: '',
           left: 'center'
         },
         xAxis: {
           type: 'category',
-          data: it.valueData
+          data: [it.valueData[0],it.valueData[2]]
         },
         yAxis: {
           type: 'value'
         },
         series: [
           {
-            data: it.countData,
+            data: [it.countData[0],it.countData[2]],
             type: 'bar'
           }
         ]
       };
     })
   }
-
-  option: EChartsOption = {};
 }

@@ -32,7 +32,7 @@ export class GraphGenderComponent {
         },
         series: [
           {
-            name: 'Access From',
+            name: 'Info',
             type: 'pie',
             radius: '70%',
             data: [
