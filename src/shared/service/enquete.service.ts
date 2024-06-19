@@ -20,5 +20,27 @@ export class EnqueteService {
     return this.http.get(`${this.api_server}/get_descriptions`)
   }
 
+  getGender(): Observable<any> {
+    return this.http.get(`${this.api_server}/graph/gender`);
+  }
+
+  getAge(): Observable<any> {
+    return this.http.get(`${this.api_server}/graph/age`);
+  }
+
+  getState(): Observable<any> {
+    return this.http.get(`${this.api_server}/graph/state`);
+  }
+
+  getPsychologyForm(): Observable<any> {
+    return this.http.get(`${this.api_server}/graph/psychology_form`);
+  }
+
+  getPsychologyProcess(): Observable<any> {
+    return this.http.get(`${this.api_server}/graph/psychology_process`);
+  }
+
+  
+
   
 }
